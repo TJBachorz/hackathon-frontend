@@ -8,6 +8,7 @@ header {
   align-items: center;
   background: rgb(180,58,136);
   background: linear-gradient(90deg, rgba(180,58,136,1) 0%, rgba(253,29,29,1) 50%, rgba(252,151,69,1) 100%);
+  border-bottom: red;
 }
 
 h1 {
@@ -19,6 +20,14 @@ h1 {
 
 h2 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: x-large;
+  
+  color: red;
+}
+
+p {
+  font-style: italic;
+
 }
 
 img {
@@ -31,6 +40,7 @@ img {
   margin-left: auto;
   margin-right: auto;
   margin-top: auto;
+  border-style: solid;
 }
 
 .card-info {

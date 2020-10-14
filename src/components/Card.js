@@ -5,7 +5,7 @@ import {useSpring, animated} from 'react-spring';
 
 export default function CharacterCard({character, makeRandomCharacter, blockCharacter}) {
 
-    const {name, image} = character
+    const {name, image, interest} = character
 
     const changeCharacter = () => {
         makeRandomCharacter()
@@ -23,6 +23,7 @@ export default function CharacterCard({character, makeRandomCharacter, blockChar
             <div className="card-info">
                 <img src={image} alt={name}/>
                 <h2>{name}</h2>
+                <p>Likes: <strong>{interest}</strong></p>
                 <button onClick={(event) => blockUser(event, character)}>BLOCK</button>
             </div>
         </div>
