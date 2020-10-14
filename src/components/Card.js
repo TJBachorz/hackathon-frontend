@@ -1,6 +1,6 @@
-import React from 'react'
+import React from 'react';
+import {useSpring, animated} from 'react-spring';
 
-import {useSpring, animated} from 'react-spring'
 
 
 export default function CharacterCard({character, makeRandomCharacter, blockCharacter}) {
@@ -21,8 +21,8 @@ export default function CharacterCard({character, makeRandomCharacter, blockChar
     return (
         <div onClick={changeCharacter} className="card-container">
             <div className="card-info">
-                <h2>{name}</h2>
                 <img src={image} alt={name}/>
+                <h2>{name}</h2>
                 <button onClick={(event) => blockUser(event, character)}>BLOCK</button>
             </div>
         </div>
