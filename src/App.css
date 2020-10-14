@@ -19,7 +19,6 @@ h1 {
 
 h2 {
   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  
 }
 
 img {
@@ -35,6 +34,10 @@ img {
 }
 
 .card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   margin: 70 px;
 }
 
