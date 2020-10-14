@@ -1,42 +1,37 @@
-import React, {Component} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import Card from './Card'
 
-export default class CardContainer extends Component {
+export default function CardContainer() {
 
-    state = {
-        characters: [],
-        randomCharacter: {}
-    }
+    const [characters, setCharacters] = useState([])
+    const [randomCharacter, setRandomCharacter] = useState({name: "TJ", image: "tj.jpg"})
 
-    componentDidMount() {
+    useEffect(() => {
         fetch("https://rickandmortyapi.com/api/character/")
             .then(response => response.json())
-            .then(data => this.setState({characters: data.results}))
-            .then(this.setState(
-                {randomCharacter: 
-                    this.state.characters[this.getRandomInt(this.state.characters.length)]
-                }
-            ))
-    }
+            .then(data => setCharacters({characters: data.results}))
+    })
 
-    getRandomInt = (max) => {
+    const getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-    // const makeRandomCharacter = () => {
-    //     let randomNumber = getRandomInt(characters.length)
-    //     let newRandomCharacter = characters[randomNumber]
-    //     setRandomCharacter({randomCharacter: newRandomCharacter})
+    const makeRandomCharacter = () => {
+        setRandomCharacter({randomCharacter: characters[0]})
+    
+
+        // let randomNumber = getRandomInt(characters.length)
+        // let newRandomCharacter = characters[randomNumber]
+        // setRandomCharacter({randomCharacter: newRandomCharacter})
         // return randomCharacter
         // return randomCharacter
         // return <Card character={randomCharacter}/>
-    // }
-    render() {
-        return (
-            <div>
-                <Card character={this.state.characters[1]}/>
-            </div>
-        )
     }
+
+    return (
+        <div onLoad={makeRandomCharacter}>
+            <Card character={characters[0]}/>
+        </div>
+    )
 }
