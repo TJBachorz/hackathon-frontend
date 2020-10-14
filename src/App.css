@@ -18,5 +18,17 @@ h1 {
   font-family: 'Sansita Swashed', cursive;
 }
 
+img {
+  height: 300px;
+  width: 300px;
+}
+
+.card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 
 
