@@ -1,0 +1,21 @@
+body {
+  background: #E5E7E6;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(180,58,136);
+  background: linear-gradient(90deg, rgba(180,58,136,1) 0%, rgba(253,29,29,1) 50%, rgba(252,151,69,1) 100%);
+}
+
+h1 {
+  text-align: center;
+  align-items: center;
+  color: #E5E7E6;
+  font-family: 'Sansita Swashed', cursive;
+}
+
+
+
