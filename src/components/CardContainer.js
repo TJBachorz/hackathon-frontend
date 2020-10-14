@@ -23,7 +23,8 @@ export default class CardContainer extends React.Component {
     }
 
     makeRandomCharacter = () => {
-        this.setState({randomCharacter: this.stateCharacters[this.getRandomInt(this.state.characters.length)]})
+        console.log()
+        this.setState({randomCharacter: this.state.characters[this.getRandomInt(this.state.characters.length)]})
     }
     
     render() {

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import {useSpring, animated} from 'react-spring'
+
 export default function CharacterCard({character, makeRandomCharacter}) {
 
     const {name, image} = character
@@ -9,7 +11,7 @@ export default function CharacterCard({character, makeRandomCharacter}) {
     }
 
     return (
-        <div onSwipe={changeCharacter} className="card-container">
+        <div onClick={changeCharacter} className="card-container">
             <div className="card-info">
                 <h2>{name}</h2>
                 <img src={image} alt={name}/>
