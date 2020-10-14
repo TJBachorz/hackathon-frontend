@@ -1,38 +1,46 @@
-import React, {Component} from 'react'
+import { render } from '@testing-library/react'
+import React from 'react'
 
 import Card from './Card'
 
-export default class CardContainer extends Component {
+export default class CardContainer extends React.Component {
 
     state = {
         characters: [],
         randomCharacter: {}
     }
-    const [characters, setCharacters] = useState([])
-    const [randomCharacter, setRandomCharacter] = useState({})
+    // const [characters, setCharacters] = useState([])
+    // const [randomCharacter, setRandomCharacter] = useState({name: "TJ", image: "tj.jpg"})
 
-    useEffect(() => {
+    componentDidMount() {
         fetch("https://rickandmortyapi.com/api/character/")
             .then(response => response.json())
-            .then(data => setCharacters({characters: data.results}))
-    })
+            .then(data => this.setState({
+                characters: data.results,
+                randomCharacter: data.results[this.getRandomInt(data.results.length)]
+            }))
+    }
 
-    const getRandomInt = (max) => {
+    getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-    const makeRandomCharacter = () => {
-        let randomNumber = getRandomInt(characters.length)
-        let newRandomCharacter = characters[randomNumber]
-        setRandomCharacter({randomCharacter: newRandomCharacter})
+    // const makeRandomCharacter = () => {
+    //     setRandomCharacter({randomCharacter: characters.characters[0]})
+    
+
+        // let randomNumber = getRandomInt(characters.length)
+        // let newRandomCharacter = characters[randomNumber]
+        // setRandomCharacter({randomCharacter: newRandomCharacter})
         // return randomCharacter
         // return randomCharacter
         // return <Card character={randomCharacter}/>
+    
+    render() {
+        return (
+            <div>
+                <Card character={this.state.randomCharacter}/>
+            </div>
+        )
     }
-
-    return (
-        <div onLoad={() => makeRandomCharacter}>
-            <Card character={randomCharacter}/>
-        </div>
-    )
 }
