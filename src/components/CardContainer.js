@@ -1,37 +1,36 @@
-import React, {useState, useEffect} from 'react'
-
+import { render } from '@testing-library/react'
+import React from 'react'
 import Card from './Card'
 
-export default function CardContainer() {
+export default class CardContainer extends React.Component {
 
-    const [characters, setCharacters] = useState([])
-    const [randomCharacter, setRandomCharacter] = useState({name: "TJ", image: "tj.jpg"})
+    state = {
+        characters: [],
+        randomCharacter: {}
+    }
 
-    useEffect(() => {
+    componentDidMount() {
         fetch("https://rickandmortyapi.com/api/character/")
             .then(response => response.json())
-            .then(data => setCharacters({characters: data.results}))
-    })
+            .then(data => this.setState({
+                characters: data.results,
+                randomCharacter: data.results[this.getRandomInt(data.results.length)]
+            }))
+    }
 
-    const getRandomInt = (max) => {
+    getRandomInt = (max) => {
         return Math.floor(Math.random() * Math.floor(max));
     }
 
-    const makeRandomCharacter = () => {
-        setRandomCharacter({randomCharacter: characters[0]})
-    
-
-        // let randomNumber = getRandomInt(characters.length)
-        // let newRandomCharacter = characters[randomNumber]
-        // setRandomCharacter({randomCharacter: newRandomCharacter})
-        // return randomCharacter
-        // return randomCharacter
-        // return <Card character={randomCharacter}/>
+    makeRandomCharacter = () => {
+        this.setState({randomCharacter: this.stateCharacters[this.getRandomInt(this.state.characters.length)]})
     }
-
-    return (
-        <div onLoad={makeRandomCharacter}>
-            <Card character={characters[0]}/>
-        </div>
-    )
+    
+    render() {
+        return (
+            <div>
+                <Card character={this.state.randomCharacter} makeRandomCharacter={this.makeRandomCharacter}/>
+            </div>
+        )
+    }
 }
